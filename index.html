@@ -609,6 +609,147 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
             
               
                 
+                <a class="post-title-link" href="/2016/01/26/%E6%B8%A9%E5%BA%A6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%EF%BC%88Express%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E5%BA%94%E7%94%A8%E9%AA%A8%E6%9E%B6%EF%BC%89/" itemprop="url">
+                  温度实时监控系统（内网穿透）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-26T11:59:20+08:00" content="2016-01-26">
+              2016-01-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IOT/" itemprop="url" rel="index">
+                    <span itemprop="name">IOT</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IOT/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">毕业设计</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/26/%E6%B8%A9%E5%BA%A6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%EF%BC%88Express%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E5%BA%94%E7%94%A8%E9%AA%A8%E6%9E%B6%EF%BC%89/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/26/温度实时监控系统（Express框架搭建应用骨架）/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>起初想用Meteor， 后来发现还不能运行在该设备上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~/meteor $ curl https://install.meteor.com/ | sh</span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100  6674    0  6674    0     0   1698      0 --:--:--  0:00:03 --:--:--  1698</span><br><span class="line">Unusable architecture: armv7l</span><br><span class="line">Meteor only supports i686 and x86_64 for now.</span><br></pre></td></tr></table></figure>
+<p>利用Express构造器，在本地当前目录下创建一个命名为 realTimeTemperature 的应用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ChenneyMacBook-Pro:pageInfo Chenney$ express -e realTimeTemperature</span><br><span class="line"></span><br><span class="line">   create : realTimeTemperature</span><br><span class="line">   create : realTimeTemperature/package.json</span><br><span class="line">   create : realTimeTemperature/app.js</span><br><span class="line">   create : realTimeTemperature/public</span><br><span class="line">   create : realTimeTemperature/public/stylesheets</span><br><span class="line">   create : realTimeTemperature/public/stylesheets/style.css</span><br><span class="line">   create : realTimeTemperature/routes</span><br><span class="line">   create : realTimeTemperature/routes/index.js</span><br><span class="line">   create : realTimeTemperature/routes/users.js</span><br><span class="line">   create : realTimeTemperature/public/javascripts</span><br><span class="line">   create : realTimeTemperature/views</span><br><span class="line">   create : realTimeTemperature/views/index.ejs</span><br><span class="line">   create : realTimeTemperature/views/error.ejs</span><br><span class="line">   create : realTimeTemperature/public/images</span><br><span class="line">   create : realTimeTemperature/bin</span><br><span class="line">   create : realTimeTemperature/bin/www</span><br><span class="line"></span><br><span class="line">   install dependencies:</span><br><span class="line">     $ cd realTimeTemperature &amp;&amp; npm install</span><br><span class="line"></span><br><span class="line">   run the app:</span><br><span class="line">     $ DEBUG=realTimeTemperature:* npm start</span><br></pre></td></tr></table></figure>
+
+<p>安装所有依赖包，启动，查看 <code>http://localhost:3000/</code> ,正常显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">ChenneyMacBook-Pro:pageInfo Chenney$ cd realTimeTemperature &amp;&amp; npm install</span><br><span class="line">debug@2.2.0 node_modules/debug</span><br><span class="line">└── ms@0.7.1</span><br><span class="line"></span><br><span class="line">cookie-parser@1.3.5 node_modules/cookie-parser</span><br><span class="line">├── cookie@0.1.3</span><br><span class="line">└── cookie-signature@1.0.6</span><br><span class="line"></span><br><span class="line">ejs@2.3.4 node_modules/ejs</span><br><span class="line"></span><br><span class="line">serve-favicon@2.3.0 node_modules/serve-favicon</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── ms@0.7.1</span><br><span class="line">└── fresh@0.3.0</span><br><span class="line"></span><br><span class="line">morgan@1.6.1 node_modules/morgan</span><br><span class="line">├── on-headers@1.0.1</span><br><span class="line">├── basic-auth@1.0.3</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">└── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line"></span><br><span class="line">body-parser@1.13.3 node_modules/body-parser</span><br><span class="line">├── bytes@2.1.0</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── http-errors@1.3.1 (inherits@2.0.1, statuses@1.2.1)</span><br><span class="line">├── iconv-lite@0.4.11</span><br><span class="line">├── raw-body@2.1.5 (unpipe@1.0.0, bytes@2.2.0, iconv-lite@0.4.13)</span><br><span class="line">└── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line"></span><br><span class="line">express@4.13.4 node_modules/express</span><br><span class="line">├── escape-html@1.0.3</span><br><span class="line">├── array-flatten@1.1.1</span><br><span class="line">├── utils-merge@1.0.0</span><br><span class="line">├── cookie-signature@1.0.6</span><br><span class="line">├── range-parser@1.0.3</span><br><span class="line">├── methods@1.1.2</span><br><span class="line">├── vary@1.0.1</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── merge-descriptors@1.0.1</span><br><span class="line">├── fresh@0.3.0</span><br><span class="line">├── cookie@0.1.5</span><br><span class="line">├── path-to-regexp@0.1.7</span><br><span class="line">├── content-disposition@0.5.1</span><br><span class="line">├── serve-static@1.10.2</span><br><span class="line">├── depd@1.1.0</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── finalhandler@0.4.1 (unpipe@1.0.0)</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── proxy-addr@1.0.10 (forwarded@0.1.0, ipaddr.js@1.0.5)</span><br><span class="line">├── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line">├── accepts@1.2.13 (negotiator@0.5.3, mime-types@2.1.9)</span><br><span class="line">└── send@0.13.1 (destroy@1.0.4, statuses@1.2.1, ms@0.7.1, mime@1.3.4, http-errors@1.3.1)</span><br><span class="line">ChenneyMacBook-Pro:realTimeTemperature Chenney$ npm start</span><br><span class="line"></span><br><span class="line">&gt; realTimeTemperature@0.0.0 start /Users/Chenney/pageInfo/realTimeTemperature</span><br><span class="line">&gt; node ./bin/www</span><br></pre></td></tr></table></figure>
+
+<p>删除node_modules，上传文件至服务器，再安装依赖包，启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ChenneyMacBook-Pro:pageInfo Chenney$ scp -r realTimeTemperature pi@192.168.0.128:/home/pi</span><br><span class="line">pi@192.168.0.128&apos;s password: </span><br><span class="line">.DS_Store                                                                             100% 6148     6.0KB/s   00:00    </span><br><span class="line">app.js                                                                                100% 1441     1.4KB/s   00:00    </span><br><span class="line">www                                                                                   100% 1605     1.6KB/s   00:00    </span><br><span class="line">package.json                                                                          100%  336     0.3KB/s   00:00    </span><br><span class="line">style.css                                                                             100%  111     0.1KB/s   00:00    </span><br><span class="line">index.js                                                                              100%  205     0.2KB/s   00:00    </span><br><span class="line">users.js                                                                              100%  203     0.2KB/s   00:00    </span><br><span class="line">error.ejs                                                                             100%   83     0.1KB/s   00:00    </span><br><span class="line">index.ejs                                                                             100%  222     0.2KB/s   00:00</span><br></pre></td></tr></table></figure>
+
+<p>这里使用淘宝镜像 -_-</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:/home/pi# cd realTimeTemperature &amp;&amp; npm install --registry=https://registry.npm.taobao.org</span><br><span class="line">cookie-parser@1.3.5 node_modules/cookie-parser</span><br><span class="line">├── cookie@0.1.3</span><br><span class="line">└── cookie-signature@1.0.6</span><br><span class="line"></span><br><span class="line">serve-favicon@2.3.0 node_modules/serve-favicon</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── fresh@0.3.0</span><br><span class="line">└── ms@0.7.1</span><br><span class="line"></span><br><span class="line">debug@2.2.0 node_modules/debug</span><br><span class="line">└── ms@0.7.1</span><br><span class="line"></span><br><span class="line">morgan@1.6.1 node_modules/morgan</span><br><span class="line">├── basic-auth@1.0.3</span><br><span class="line">├── on-headers@1.0.1</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">└── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line"></span><br><span class="line">ejs@2.3.4 node_modules/ejs</span><br><span class="line"></span><br><span class="line">express@4.13.4 node_modules/express</span><br><span class="line">├── escape-html@1.0.3</span><br><span class="line">├── cookie-signature@1.0.6</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── vary@1.0.1</span><br><span class="line">├── methods@1.1.2</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── fresh@0.3.0</span><br><span class="line">├── cookie@0.1.5</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── range-parser@1.0.3</span><br><span class="line">├── serve-static@1.10.2</span><br><span class="line">├── array-flatten@1.1.1</span><br><span class="line">├── utils-merge@1.0.0</span><br><span class="line">├── merge-descriptors@1.0.1</span><br><span class="line">├── content-disposition@0.5.1</span><br><span class="line">├── path-to-regexp@0.1.7</span><br><span class="line">├── depd@1.1.0</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── finalhandler@0.4.1 (unpipe@1.0.0)</span><br><span class="line">├── proxy-addr@1.0.10 (forwarded@0.1.0, ipaddr.js@1.0.5)</span><br><span class="line">├── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line">├── accepts@1.2.13 (negotiator@0.5.3, mime-types@2.1.9)</span><br><span class="line">└── send@0.13.1 (destroy@1.0.4, statuses@1.2.1, ms@0.7.1, mime@1.3.4, http-errors@1.3.1)</span><br><span class="line"></span><br><span class="line">body-parser@1.13.3 node_modules/body-parser</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── bytes@2.1.0</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── http-errors@1.3.1 (statuses@1.2.1, inherits@2.0.1)</span><br><span class="line">├── iconv-lite@0.4.11</span><br><span class="line">├── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line">└── raw-body@2.1.5 (unpipe@1.0.0, bytes@2.2.0, iconv-lite@0.4.13)</span><br><span class="line">root@raspberrypi:/home/pi/realTimeTemperature#</span><br></pre></td></tr></table></figure>
+
+<p>树莓派上查看 <code>http://localhost:3000/</code>，正常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:/home/pi/realTimeTemperature# npm start</span><br><span class="line"></span><br><span class="line">&gt; realTimeTemperature@0.0.0 start /home/pi/realTimeTemperature</span><br><span class="line">&gt; node ./bin/www</span><br><span class="line"></span><br><span class="line">GET / 200 120.360 ms - 207</span><br><span class="line">GET /stylesheets/style.css 200 35.863 ms - 111</span><br><span class="line">GET /favicon.ico 404 44.489 ms - 976</span><br></pre></td></tr></table></figure>
+
+<p>开启ngrok，其他网络中查看 <code>http://897aaba9.ngrok.io</code>，正常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ ./ngrok http 3000</span><br><span class="line"></span><br><span class="line">ngrok by @inconshreveable                                       (Ctrl+C to quit)</span><br><span class="line">                                                                                </span><br><span class="line">Tunnel Status                 online                                            </span><br><span class="line">Version                       2.0.19/2.0.19                                     </span><br><span class="line">Web Interface                 http://127.0.0.1:4040                             </span><br><span class="line">Forwarding                    http://897aaba9.ngrok.io -&gt; localhost:3000        </span><br><span class="line">Forwarding                    https://897aaba9.ngrok.io -&gt; localhost:3000       </span><br><span class="line">                                                                                </span><br><span class="line">Connections                   ttl     opn     rt1     rt5     p50     p90       </span><br><span class="line">                              1       0       0.01    0.00    33.22   33.22     </span><br><span class="line">                                                                                </span><br><span class="line">HTTP Requests                                                                   </span><br><span class="line">-------------                                                                   </span><br><span class="line">                                                                                </span><br><span class="line">GET /favicon.ico               404 Not Found                                    </span><br><span class="line">GET /stylesheets/style.css     200 OK                                           </span><br><span class="line">GET /                          200 OK</span><br></pre></td></tr></table></figure>
+<p>一切正常！</p>
+<hr>
+<p>备注：</p>
+<p><a href="https://ngrok.com/" target="_blank" rel="noopener">Ngrok官网</a>free版的域名不能固定，所以还要搭配配置文件，固定域名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~/ngrok_linux_arm $ ./ngrok -config ngrok.cfg -subdomain superchenney 3000</span><br><span class="line"></span><br><span class="line">ngrok                                                           (Ctrl+C to quit)</span><br><span class="line">                                                                                </span><br><span class="line">Tunnel Status                 online                                            </span><br><span class="line">Version                       1.7/1.7                                           </span><br><span class="line">Forwarding                    http://superchenney.ngrok.natapp.cn -&gt; 127.0.0.1:3</span><br><span class="line">Forwarding                    https://superchenney.ngrok.natapp.cn -&gt; 127.0.0.1:</span><br><span class="line">Web Interface                 127.0.0.1:4040                                    </span><br><span class="line"># Conn                        2                                                 </span><br><span class="line">Avg Conn Time                 60409.82ms                                        </span><br><span class="line">                                                                                </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">HTTP Requests                                                         </span><br><span class="line">-------------                                                         </span><br><span class="line">                                                                      </span><br><span class="line">GET /favicon.ico              404 Not Found                           </span><br><span class="line">GET /stylesheets/style.css    200 OK                                  </span><br><span class="line">GET /                         200 OK</span><br></pre></td></tr></table></figure>
+
+
+
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/26/%E6%B8%A9%E5%BA%A6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%EF%BC%89/" itemprop="url">
                   温度实时监控系统（基础配置）
                 </a>
@@ -741,147 +882,6 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 <li><a href="http://blog.wia.io/installing-node-js-v4-0-0-on-a-raspberry-pi/" target="_blank" rel="noopener">http://blog.wia.io/installing-node-js-v4-0-0-on-a-raspberry-pi/</a></li>
 <li><a href="http://ourjs.com/detail/54b47940232227083e000006" target="_blank" rel="noopener">http://ourjs.com/detail/54b47940232227083e000006</a></li>
 </ol>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/26/%E6%B8%A9%E5%BA%A6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%EF%BC%88Express%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E5%BA%94%E7%94%A8%E9%AA%A8%E6%9E%B6%EF%BC%89/" itemprop="url">
-                  温度实时监控系统（内网穿透）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-26T11:59:20+08:00" content="2016-01-26">
-              2016-01-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IOT/" itemprop="url" rel="index">
-                    <span itemprop="name">IOT</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IOT/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
-                    <span itemprop="name">毕业设计</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/26/%E6%B8%A9%E5%BA%A6%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%EF%BC%88Express%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E5%BA%94%E7%94%A8%E9%AA%A8%E6%9E%B6%EF%BC%89/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/26/温度实时监控系统（Express框架搭建应用骨架）/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>起初想用Meteor， 后来发现还不能运行在该设备上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~/meteor $ curl https://install.meteor.com/ | sh</span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100  6674    0  6674    0     0   1698      0 --:--:--  0:00:03 --:--:--  1698</span><br><span class="line">Unusable architecture: armv7l</span><br><span class="line">Meteor only supports i686 and x86_64 for now.</span><br></pre></td></tr></table></figure>
-<p>利用Express构造器，在本地当前目录下创建一个命名为 realTimeTemperature 的应用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ChenneyMacBook-Pro:pageInfo Chenney$ express -e realTimeTemperature</span><br><span class="line"></span><br><span class="line">   create : realTimeTemperature</span><br><span class="line">   create : realTimeTemperature/package.json</span><br><span class="line">   create : realTimeTemperature/app.js</span><br><span class="line">   create : realTimeTemperature/public</span><br><span class="line">   create : realTimeTemperature/public/stylesheets</span><br><span class="line">   create : realTimeTemperature/public/stylesheets/style.css</span><br><span class="line">   create : realTimeTemperature/routes</span><br><span class="line">   create : realTimeTemperature/routes/index.js</span><br><span class="line">   create : realTimeTemperature/routes/users.js</span><br><span class="line">   create : realTimeTemperature/public/javascripts</span><br><span class="line">   create : realTimeTemperature/views</span><br><span class="line">   create : realTimeTemperature/views/index.ejs</span><br><span class="line">   create : realTimeTemperature/views/error.ejs</span><br><span class="line">   create : realTimeTemperature/public/images</span><br><span class="line">   create : realTimeTemperature/bin</span><br><span class="line">   create : realTimeTemperature/bin/www</span><br><span class="line"></span><br><span class="line">   install dependencies:</span><br><span class="line">     $ cd realTimeTemperature &amp;&amp; npm install</span><br><span class="line"></span><br><span class="line">   run the app:</span><br><span class="line">     $ DEBUG=realTimeTemperature:* npm start</span><br></pre></td></tr></table></figure>
-
-<p>安装所有依赖包，启动，查看 <code>http://localhost:3000/</code> ,正常显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">ChenneyMacBook-Pro:pageInfo Chenney$ cd realTimeTemperature &amp;&amp; npm install</span><br><span class="line">debug@2.2.0 node_modules/debug</span><br><span class="line">└── ms@0.7.1</span><br><span class="line"></span><br><span class="line">cookie-parser@1.3.5 node_modules/cookie-parser</span><br><span class="line">├── cookie@0.1.3</span><br><span class="line">└── cookie-signature@1.0.6</span><br><span class="line"></span><br><span class="line">ejs@2.3.4 node_modules/ejs</span><br><span class="line"></span><br><span class="line">serve-favicon@2.3.0 node_modules/serve-favicon</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── ms@0.7.1</span><br><span class="line">└── fresh@0.3.0</span><br><span class="line"></span><br><span class="line">morgan@1.6.1 node_modules/morgan</span><br><span class="line">├── on-headers@1.0.1</span><br><span class="line">├── basic-auth@1.0.3</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">└── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line"></span><br><span class="line">body-parser@1.13.3 node_modules/body-parser</span><br><span class="line">├── bytes@2.1.0</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── http-errors@1.3.1 (inherits@2.0.1, statuses@1.2.1)</span><br><span class="line">├── iconv-lite@0.4.11</span><br><span class="line">├── raw-body@2.1.5 (unpipe@1.0.0, bytes@2.2.0, iconv-lite@0.4.13)</span><br><span class="line">└── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line"></span><br><span class="line">express@4.13.4 node_modules/express</span><br><span class="line">├── escape-html@1.0.3</span><br><span class="line">├── array-flatten@1.1.1</span><br><span class="line">├── utils-merge@1.0.0</span><br><span class="line">├── cookie-signature@1.0.6</span><br><span class="line">├── range-parser@1.0.3</span><br><span class="line">├── methods@1.1.2</span><br><span class="line">├── vary@1.0.1</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── merge-descriptors@1.0.1</span><br><span class="line">├── fresh@0.3.0</span><br><span class="line">├── cookie@0.1.5</span><br><span class="line">├── path-to-regexp@0.1.7</span><br><span class="line">├── content-disposition@0.5.1</span><br><span class="line">├── serve-static@1.10.2</span><br><span class="line">├── depd@1.1.0</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── finalhandler@0.4.1 (unpipe@1.0.0)</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── proxy-addr@1.0.10 (forwarded@0.1.0, ipaddr.js@1.0.5)</span><br><span class="line">├── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line">├── accepts@1.2.13 (negotiator@0.5.3, mime-types@2.1.9)</span><br><span class="line">└── send@0.13.1 (destroy@1.0.4, statuses@1.2.1, ms@0.7.1, mime@1.3.4, http-errors@1.3.1)</span><br><span class="line">ChenneyMacBook-Pro:realTimeTemperature Chenney$ npm start</span><br><span class="line"></span><br><span class="line">&gt; realTimeTemperature@0.0.0 start /Users/Chenney/pageInfo/realTimeTemperature</span><br><span class="line">&gt; node ./bin/www</span><br></pre></td></tr></table></figure>
-
-<p>删除node_modules，上传文件至服务器，再安装依赖包，启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ChenneyMacBook-Pro:pageInfo Chenney$ scp -r realTimeTemperature pi@192.168.0.128:/home/pi</span><br><span class="line">pi@192.168.0.128&apos;s password: </span><br><span class="line">.DS_Store                                                                             100% 6148     6.0KB/s   00:00    </span><br><span class="line">app.js                                                                                100% 1441     1.4KB/s   00:00    </span><br><span class="line">www                                                                                   100% 1605     1.6KB/s   00:00    </span><br><span class="line">package.json                                                                          100%  336     0.3KB/s   00:00    </span><br><span class="line">style.css                                                                             100%  111     0.1KB/s   00:00    </span><br><span class="line">index.js                                                                              100%  205     0.2KB/s   00:00    </span><br><span class="line">users.js                                                                              100%  203     0.2KB/s   00:00    </span><br><span class="line">error.ejs                                                                             100%   83     0.1KB/s   00:00    </span><br><span class="line">index.ejs                                                                             100%  222     0.2KB/s   00:00</span><br></pre></td></tr></table></figure>
-
-<p>这里使用淘宝镜像 -_-</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:/home/pi# cd realTimeTemperature &amp;&amp; npm install --registry=https://registry.npm.taobao.org</span><br><span class="line">cookie-parser@1.3.5 node_modules/cookie-parser</span><br><span class="line">├── cookie@0.1.3</span><br><span class="line">└── cookie-signature@1.0.6</span><br><span class="line"></span><br><span class="line">serve-favicon@2.3.0 node_modules/serve-favicon</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── fresh@0.3.0</span><br><span class="line">└── ms@0.7.1</span><br><span class="line"></span><br><span class="line">debug@2.2.0 node_modules/debug</span><br><span class="line">└── ms@0.7.1</span><br><span class="line"></span><br><span class="line">morgan@1.6.1 node_modules/morgan</span><br><span class="line">├── basic-auth@1.0.3</span><br><span class="line">├── on-headers@1.0.1</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">└── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line"></span><br><span class="line">ejs@2.3.4 node_modules/ejs</span><br><span class="line"></span><br><span class="line">express@4.13.4 node_modules/express</span><br><span class="line">├── escape-html@1.0.3</span><br><span class="line">├── cookie-signature@1.0.6</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── vary@1.0.1</span><br><span class="line">├── methods@1.1.2</span><br><span class="line">├── parseurl@1.3.1</span><br><span class="line">├── fresh@0.3.0</span><br><span class="line">├── cookie@0.1.5</span><br><span class="line">├── etag@1.7.0</span><br><span class="line">├── range-parser@1.0.3</span><br><span class="line">├── serve-static@1.10.2</span><br><span class="line">├── array-flatten@1.1.1</span><br><span class="line">├── utils-merge@1.0.0</span><br><span class="line">├── merge-descriptors@1.0.1</span><br><span class="line">├── content-disposition@0.5.1</span><br><span class="line">├── path-to-regexp@0.1.7</span><br><span class="line">├── depd@1.1.0</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── finalhandler@0.4.1 (unpipe@1.0.0)</span><br><span class="line">├── proxy-addr@1.0.10 (forwarded@0.1.0, ipaddr.js@1.0.5)</span><br><span class="line">├── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line">├── accepts@1.2.13 (negotiator@0.5.3, mime-types@2.1.9)</span><br><span class="line">└── send@0.13.1 (destroy@1.0.4, statuses@1.2.1, ms@0.7.1, mime@1.3.4, http-errors@1.3.1)</span><br><span class="line"></span><br><span class="line">body-parser@1.13.3 node_modules/body-parser</span><br><span class="line">├── content-type@1.0.1</span><br><span class="line">├── bytes@2.1.0</span><br><span class="line">├── depd@1.0.1</span><br><span class="line">├── qs@4.0.0</span><br><span class="line">├── on-finished@2.3.0 (ee-first@1.1.1)</span><br><span class="line">├── http-errors@1.3.1 (statuses@1.2.1, inherits@2.0.1)</span><br><span class="line">├── iconv-lite@0.4.11</span><br><span class="line">├── type-is@1.6.10 (media-typer@0.3.0, mime-types@2.1.9)</span><br><span class="line">└── raw-body@2.1.5 (unpipe@1.0.0, bytes@2.2.0, iconv-lite@0.4.13)</span><br><span class="line">root@raspberrypi:/home/pi/realTimeTemperature#</span><br></pre></td></tr></table></figure>
-
-<p>树莓派上查看 <code>http://localhost:3000/</code>，正常</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@raspberrypi:/home/pi/realTimeTemperature# npm start</span><br><span class="line"></span><br><span class="line">&gt; realTimeTemperature@0.0.0 start /home/pi/realTimeTemperature</span><br><span class="line">&gt; node ./bin/www</span><br><span class="line"></span><br><span class="line">GET / 200 120.360 ms - 207</span><br><span class="line">GET /stylesheets/style.css 200 35.863 ms - 111</span><br><span class="line">GET /favicon.ico 404 44.489 ms - 976</span><br></pre></td></tr></table></figure>
-
-<p>开启ngrok，其他网络中查看 <code>http://897aaba9.ngrok.io</code>，正常</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ ./ngrok http 3000</span><br><span class="line"></span><br><span class="line">ngrok by @inconshreveable                                       (Ctrl+C to quit)</span><br><span class="line">                                                                                </span><br><span class="line">Tunnel Status                 online                                            </span><br><span class="line">Version                       2.0.19/2.0.19                                     </span><br><span class="line">Web Interface                 http://127.0.0.1:4040                             </span><br><span class="line">Forwarding                    http://897aaba9.ngrok.io -&gt; localhost:3000        </span><br><span class="line">Forwarding                    https://897aaba9.ngrok.io -&gt; localhost:3000       </span><br><span class="line">                                                                                </span><br><span class="line">Connections                   ttl     opn     rt1     rt5     p50     p90       </span><br><span class="line">                              1       0       0.01    0.00    33.22   33.22     </span><br><span class="line">                                                                                </span><br><span class="line">HTTP Requests                                                                   </span><br><span class="line">-------------                                                                   </span><br><span class="line">                                                                                </span><br><span class="line">GET /favicon.ico               404 Not Found                                    </span><br><span class="line">GET /stylesheets/style.css     200 OK                                           </span><br><span class="line">GET /                          200 OK</span><br></pre></td></tr></table></figure>
-<p>一切正常！</p>
-<hr>
-<p>备注：</p>
-<p><a href="https://ngrok.com/" target="_blank" rel="noopener">Ngrok官网</a>free版的域名不能固定，所以还要搭配配置文件，固定域名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~/ngrok_linux_arm $ ./ngrok -config ngrok.cfg -subdomain superchenney 3000</span><br><span class="line"></span><br><span class="line">ngrok                                                           (Ctrl+C to quit)</span><br><span class="line">                                                                                </span><br><span class="line">Tunnel Status                 online                                            </span><br><span class="line">Version                       1.7/1.7                                           </span><br><span class="line">Forwarding                    http://superchenney.ngrok.natapp.cn -&gt; 127.0.0.1:3</span><br><span class="line">Forwarding                    https://superchenney.ngrok.natapp.cn -&gt; 127.0.0.1:</span><br><span class="line">Web Interface                 127.0.0.1:4040                                    </span><br><span class="line"># Conn                        2                                                 </span><br><span class="line">Avg Conn Time                 60409.82ms                                        </span><br><span class="line">                                                                                </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">HTTP Requests                                                         </span><br><span class="line">-------------                                                         </span><br><span class="line">                                                                      </span><br><span class="line">GET /favicon.ico              404 Not Found                           </span><br><span class="line">GET /stylesheets/style.css    200 OK                                  </span><br><span class="line">GET /                         200 OK</span><br></pre></td></tr></table></figure>
-
-
-
 
             
           </span>
